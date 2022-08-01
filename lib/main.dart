@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import './question.dart';
 import './answer.dart';
 import './quiz.dart';
-import './answer.dart';
+import './result.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,14 +14,27 @@ class MyApp extends StatefulWidget {
     return _MyAppState();
   }
 }
+//___________________________
+// class Student {
+//   String name;
+//   int rollno;
+//   Student({required this.name, required this.rollno});
+// }
+
+// List<Student> students = [
+//    Student(name: "John", rollno: 23),
+//    Student(name: "Max", rollno: 10)
+// ];
+// List<String> countries = ["Canada", "Brazil", "USA"];
+
+//___________________________
 
 class _MyAppState extends State<MyApp> {
   int _questionIndex = 0;
-  int dupa = 0;
 
   @override
   Widget build(BuildContext context) {
-    const questions = [
+    const _questions = [
       {
         'questionText': 'What\'s your favorite color?',
         'answers': ['Yellow', 'Green', 'Blue', 'Black'],
@@ -35,9 +48,21 @@ class _MyAppState extends State<MyApp> {
         'answers': ['Pizza', 'Banan', 'Spaghetti', 'Pasta'],
       },
     ];
-
+    // Map<String, dynamic> nic = {'nic': 'xd'};
+    // print(nic);
+// print(countries);
+// countries.removeWhere((str){
+//     return str == "Brazil";
+// });
+// print('---');
+// print(countries);
+    // final lista = ['japko', 'grusza', 1];
+    List lista1 = ['japko', 'grusza'];
+    lista1.add(2);
+    // print(lista);
+    print(lista1);
     void _answerQuestion() {
-      if (_questionIndex < questions.length) {
+      if (_questionIndex < _questions.length) {
         setState(() {
           _questionIndex++;
         });
@@ -47,18 +72,15 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: const Text(''),
-          backgroundColor: Colors.amber[900],
-          elevation: 0,
-        ),
-        body: _questionIndex < questions.length
-            ? 
-            : Center(
-                child: Text('You did it'),
-              ),
-      ),
+          appBar: AppBar(
+            centerTitle: true,
+            title: const Text(''),
+            backgroundColor: Colors.amber[900],
+            elevation: 0,
+          ),
+          body: _questionIndex < _questions.length
+              ? Quiz(_answerQuestion, _questions, _questionIndex)
+              : Result()),
     );
   }
 }
