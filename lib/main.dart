@@ -32,21 +32,36 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int _questionIndex = 0;
-
+  int _totalScore = 0;
   @override
   Widget build(BuildContext context) {
     const _questions = [
       {
         'questionText': 'What\'s your favorite color?',
-        'answers': ['Yellow', 'Green', 'Blue', 'Black'],
+        'answers': [
+          {'text': 'Yellow', 'score': 1},
+          {'text': 'Green', 'score': 1},
+          {'text': 'Blue', 'score': 1},
+          {'text': 'Black', 'score': 1}
+        ],
       },
       {
         'questionText': 'What\'s your favorite animal?',
-        'answers': ['Dog', 'Cat', 'Elephant', 'Horse'],
+        'answers': [
+          {'text': 'Dog', 'score': 1},
+          {'text': 'Cat', 'score': 1},
+          {'text': 'Elephant', 'score': 1},
+          {'text': 'Horse', 'score': 1}
+        ],
       },
       {
         'questionText': 'What\'s your favorite food?',
-        'answers': ['Pizza', 'Banan', 'Spaghetti', 'Pasta'],
+        'answers': [
+          {'text': 'Pizza', 'score': 1},
+          {'text': 'Banan', 'score': 1},
+          {'text': 'Spaghetti', 'score': 1},
+          {'text': 'Pasta', 'score': 1}
+        ],
       },
     ];
     // Map<String, dynamic> nic = {'nic': 'xd'};
@@ -58,11 +73,13 @@ class _MyAppState extends State<MyApp> {
 // print('---');
 // print(countries);
     // final lista = ['japko', 'grusza', 1];
-    List lista1 = ['japko', 'grusza'];
-    lista1.add(2);
-    // print(lista);
-    print(lista1);
-    void _answerQuestion() {
+    // List lista1 = ['japko', 'grusza'];
+    // lista1.add(2);
+    // print(lista.runtimeType);
+    // print(lista1.runtimeType);
+
+    void _answerQuestion(int score) {
+      _totalScore = _totalScore + score;
       if (_questionIndex < _questions.length) {
         setState(() {
           _questionIndex++;
@@ -73,15 +90,16 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-          appBar: AppBar(
-            centerTitle: true,
-            title: const Text(''),
-            backgroundColor: Colors.amber[900],
-            elevation: 0,
-          ),
-          body: _questionIndex < _questions.length
-              ? Quiz(_answerQuestion, _questions, _questionIndex)
-              : Result()),
+        appBar: AppBar(
+          centerTitle: true,
+          title: const Text(''),
+          backgroundColor: Colors.amber[900],
+          elevation: 0,
+        ),
+        body: _questionIndex < _questions.length
+            ? Quiz(_answerQuestion, _questions, _questionIndex)
+            : Result(_totalScore),
+      ),
     );
   }
 }

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
-  const Result({Key? key}) : super(key: key);
+  final int resultScore;
+
+  Result(this.resultScore);
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('You did it'),
+    return const Center(
+      child: Text('You did it', style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),),
     );
   }
 }
