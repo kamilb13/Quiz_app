@@ -31,8 +31,8 @@ class MyApp extends StatefulWidget {
 //___________________________
 
 class _MyAppState extends State<MyApp> {
-  int _questionIndex = 0;
-  int _totalScore = 0;
+  var _questionIndex = 0;
+  var _totalScore = 0;
   @override
   Widget build(BuildContext context) {
     const _questions = [
@@ -78,6 +78,17 @@ class _MyAppState extends State<MyApp> {
     // print(lista.runtimeType);
     // print(lista1.runtimeType);
 
+    void _resetQuiz() {
+      setState(() {
+        _questionIndex = 0;
+        _totalScore = 0;
+      });
+
+      print('ogórek');
+      print(_questionIndex);
+      print(_totalScore);
+    }
+
     void _answerQuestion(int score) {
       _totalScore = _totalScore + score;
       if (_questionIndex < _questions.length) {
@@ -93,12 +104,12 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           centerTitle: true,
           title: const Text(''),
-          backgroundColor: Colors.amber[900],
+          backgroundColor: Colors.blue[900],
           elevation: 0,
         ),
         body: _questionIndex < _questions.length
             ? Quiz(_answerQuestion, _questions, _questionIndex)
-            : Result(_totalScore),
+            : Result(_totalScore, _resetQuiz),
       ),
     );
   }

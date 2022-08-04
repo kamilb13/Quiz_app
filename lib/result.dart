@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
   final int resultScore;
-  Result(this.resultScore);
+  final VoidCallback resetQuiz;
+  Result(this.resultScore, this.resetQuiz);
+
   String get resultPhrase {
     String resultText;
     if (resultScore <= 8) {
@@ -20,10 +22,24 @@ class Result extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(
-        resultPhrase,
-        style: const TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
-        textAlign: TextAlign.center,
+      child: Column(
+        children: [
+          Text(
+            resultPhrase,
+            style: const TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+          ElevatedButton(
+            onPressed: resetQuiz,
+            style: ElevatedButton.styleFrom(
+              primary: Colors.blue[700],
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+            ),
+            child: const Text('Reset quiz'),
+          )
+        ],
       ),
     );
   }
