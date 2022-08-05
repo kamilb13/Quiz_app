@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import './question.dart';
-import './answer.dart';
 import './quiz.dart';
 import './result.dart';
 
@@ -14,21 +12,6 @@ class MyApp extends StatefulWidget {
     return _MyAppState();
   }
 }
-
-//___________________________
-// class Student {
-//   String name;
-//   int rollno;
-//   Student({required this.name, required this.rollno});
-// }
-
-// List<Student> students = [
-//    Student(name: "John", rollno: 23),
-//    Student(name: "Max", rollno: 10)
-// ];
-// List<String> countries = ["Canada", "Brazil", "USA"];
-
-//___________________________
 
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
@@ -64,29 +47,12 @@ class _MyAppState extends State<MyApp> {
         ],
       },
     ];
-    // Map<String, dynamic> nic = {'nic': 'xd'};
-    // print(nic);
-// print(countries);
-// countries.removeWhere((str){
-//     return str == "Brazil";
-// });
-// print('---');
-// print(countries);
-    // final lista = ['japko', 'grusza', 1];
-    // List lista1 = ['japko', 'grusza'];
-    // lista1.add(2);
-    // print(lista.runtimeType);
-    // print(lista1.runtimeType);
 
     void _resetQuiz() {
       setState(() {
         _questionIndex = 0;
         _totalScore = 0;
       });
-
-      print('ogórek');
-      print(_questionIndex);
-      print(_totalScore);
     }
 
     void _answerQuestion(int score) {
