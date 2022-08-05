@@ -11,10 +11,13 @@ class Answer extends StatelessWidget {
     return Container(
       width: double.infinity,
       child: RaisedButton(
-        color: Colors.amber[900],
+        color: Colors.blue[900],
         textColor: Colors.white,
         onPressed: _answerQuestion,
-        child: Text(answerText),
+        child: Text(
+          answerText,
+          style: const TextStyle(fontFamily: 'Poppins'),
+        ),
       ),
     );
   }

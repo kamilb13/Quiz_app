@@ -26,7 +26,10 @@ class Result extends StatelessWidget {
         children: [
           Text(
             resultPhrase,
-            style: const TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+            style: const TextStyle(
+                fontSize: 36,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Poppins'),
             textAlign: TextAlign.center,
           ),
           ElevatedButton(
@@ -37,7 +40,10 @@ class Result extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0),
               ),
             ),
-            child: const Text('Reset quiz'),
+            child: const Text(
+              'Reset quiz',
+              style: TextStyle(fontFamily: 'Poppins'),
+            ),
           )
         ],
       ),

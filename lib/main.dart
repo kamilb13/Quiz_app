@@ -67,9 +67,13 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: Colors.blue[100],
         appBar: AppBar(
           centerTitle: true,
-          title: const Text(''),
+          title: const Text(
+            'Quiz',
+            style: TextStyle(fontFamily: 'Poppins'),
+          ),
           backgroundColor: Colors.blue[900],
           elevation: 0,
         ),
